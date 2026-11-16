@@ -13,7 +13,9 @@ if (savedTheme === "dark") {
 
 function updateThemeButton() {
   themeButtons.forEach((button) => {
-    button.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    button.textContent = document.body.classList.contains("dark-mode")
+      ? "☀️"
+      : "🌙";
   });
 }
 updateThemeButton();
@@ -21,7 +23,9 @@ updateThemeButton();
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-    const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    const theme = document.body.classList.contains("dark-mode")
+      ? "dark"
+      : "light";
     localStorage.setItem("techsmart-theme", theme);
     updateThemeButton();
   });
@@ -45,7 +49,9 @@ if (searchInput) {
   searchInput.addEventListener("input", () => {
     const searchTerm = searchInput.value.toLowerCase().trim();
     document.querySelectorAll(".shop-section .product-card").forEach((card) => {
-      card.style.display = card.textContent.toLowerCase().includes(searchTerm) ? "" : "none";
+      card.style.display = card.textContent.toLowerCase().includes(searchTerm)
+        ? ""
+        : "none";
     });
   });
 }
@@ -57,7 +63,9 @@ if (repairForm) {
   repairForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const selectedRepair = document.querySelector('input[name="repair"]:checked');
+    const selectedRepair = document.querySelector(
+      'input[name="repair"]:checked',
+    );
     if (!selectedRepair) {
       alert("Please select the type of repair you need.");
       return;
@@ -70,7 +78,7 @@ if (repairForm) {
       `Name: ${formData.get("name")}`,
       `Phone: ${formData.get("phone")}`,
       `Device: ${formData.get("device")}`,
-      `Problem: ${formData.get("details")}`
+      `Problem: ${formData.get("details")}`,
     ].join("\\n");
 
     const whatsappUrl = `https://wa.me/${SHOP_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
